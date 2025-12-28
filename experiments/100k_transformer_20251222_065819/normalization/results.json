@@ -1,0 +1,14 @@
+{
+  "layer": {
+    "test_bleu": 0.08369587586815035,
+    "test_loss": 4.434902191162109,
+    "pos_enc_type": "absolute",
+    "norm_type": "layer"
+  },
+  "rms": {
+    "test_bleu": 0.07897812616893225,
+    "test_loss": 4.439219951629639,
+    "pos_enc_type": "absolute",
+    "norm_type": "rms"
+  }
+}

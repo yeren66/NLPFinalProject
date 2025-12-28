@@ -61,16 +61,30 @@ class TransformerDecoderLayer(nn.Module):
         return tgt, attention
 
 class Transformer(nn.Module):
-    def __init__(self, encoder_layer, decoder_layer, 
-                 encoder_layers, decoder_layers, 
-                 input_dim, output_dim, 
+    def __init__(self, encoder_layer, decoder_layer,
+                 encoder_layers, decoder_layers,
+                 input_dim, output_dim,
                  hid_dim, device, pos_enc_type='absolute'):
         super().__init__()
-        
+
         self.device = device
-        
-        self.encoder_layers = nn.ModuleList([encoder_layer for _ in range(encoder_layers)])
-        self.decoder_layers = nn.ModuleList([decoder_layer for _ in range(decoder_layers)])
+
+        # Create independent copies of layers to avoid shared tensors
+        # Check if encoder_layer is a class or an instance
+        if isinstance(encoder_layer, type):
+            # It's a class, instantiate it multiple times
+            self.encoder_layers = nn.ModuleList([encoder_layer() for _ in range(encoder_layers)])
+        else:
+            # It's an instance, we need to create deep copies
+            # Import copy module for deep copying
+            import copy
+            self.encoder_layers = nn.ModuleList([copy.deepcopy(encoder_layer) for _ in range(encoder_layers)])
+
+        if isinstance(decoder_layer, type):
+            self.decoder_layers = nn.ModuleList([decoder_layer() for _ in range(decoder_layers)])
+        else:
+            import copy
+            self.decoder_layers = nn.ModuleList([copy.deepcopy(decoder_layer) for _ in range(decoder_layers)])
         
         self.encoder_embedding = nn.Embedding(input_dim, hid_dim)
         self.decoder_embedding = nn.Embedding(output_dim, hid_dim)

@@ -87,13 +87,30 @@ class NMTDataset(Dataset):
         return torch.tensor(src_indices), torch.tensor(tgt_indices)
 
 def collate_fn(batch):
-    # Pad sequences
+    """
+    Collate function with sequence lengths for pack_padded_sequence optimization.
+
+    Returns:
+        src_batch: [batch_size, max_src_len] - Padded source sequences
+        tgt_batch: [batch_size, max_tgt_len] - Padded target sequences
+        src_lengths: [batch_size] - Actual lengths of source sequences (before padding)
+        tgt_lengths: [batch_size] - Actual lengths of target sequences (before padding)
+    """
     src_batch, tgt_batch = [], []
+    src_lengths, tgt_lengths = [], []
+
     for s, t in batch:
         src_batch.append(s)
         tgt_batch.append(t)
-        
+        src_lengths.append(len(s))
+        tgt_lengths.append(len(t))
+
+    # Convert lengths to tensor
+    src_lengths = torch.tensor(src_lengths, dtype=torch.long)
+    tgt_lengths = torch.tensor(tgt_lengths, dtype=torch.long)
+
+    # Pad sequences
     src_batch = torch.nn.utils.rnn.pad_sequence(src_batch, padding_value=0, batch_first=True)
     tgt_batch = torch.nn.utils.rnn.pad_sequence(tgt_batch, padding_value=0, batch_first=True)
-    
-    return src_batch, tgt_batch
+
+    return src_batch, tgt_batch, src_lengths, tgt_lengths

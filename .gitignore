@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Data and Models (Large files)
+AP0004_Midterm&Final_translation_dataset_zh_en/
+checkpoints/
+experiments/**/checkpoints/
+models/pretrained/
+T5_model/
+*.ckpt
+*.pt
+*.bin
+*.safetensors
+*.jsonl
+*.tar.gz
+
+# Logs and Results
+logs/
+runs/
+tensorboard.log
+parsed_data/
+results/
+experiment_summary.csv
+consolidated_experiment_results.json
+
+# Temporary
+*.log

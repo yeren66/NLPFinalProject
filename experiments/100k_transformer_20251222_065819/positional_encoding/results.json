@@ -1,0 +1,14 @@
+{
+  "absolute": {
+    "test_bleu": 0.076802538085842,
+    "test_loss": 4.465286731719971,
+    "pos_enc_type": "absolute",
+    "norm_type": "layer"
+  },
+  "relative": {
+    "test_bleu": 0.07796217533277056,
+    "test_loss": 4.513056755065918,
+    "pos_enc_type": "relative",
+    "norm_type": "layer"
+  }
+}

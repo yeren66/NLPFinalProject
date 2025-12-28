@@ -1,0 +1,19 @@
+{
+  "experiment_type": "RNN",
+  "timestamp": "20251222_065819",
+  "config": {
+    "n_epochs": 50,
+    "batch_size": 256
+  },
+  "experiments": {
+    "baseline": "experiments/100k_rnn_20251222_065819/baseline/results.json",
+    "attention_mechanisms": "experiments/100k_rnn_20251222_065819/attention_mechanisms/results.json",
+    "teacher_forcing": "experiments/100k_rnn_20251222_065819/teacher_forcing/results.json"
+  },
+  "logs": {
+    "main": "logs/rnn_experiments_20251222_065819.log",
+    "baseline": "logs/rnn_baseline_20251222_065819.log",
+    "attention": "logs/rnn_attention_mechanisms_20251222_065819.log",
+    "teacher_forcing": "logs/rnn_teacher_forcing_20251222_065819.log"
+  }
+}

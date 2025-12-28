@@ -77,7 +77,8 @@ class MultiHeadAttention(nn.Module):
             
         if mask is not None:
              # Mask is [batch, 1, 1, k_len] or similar
-             energy = energy.masked_fill(mask == 0, -1e10)
+             # Use -1e4 instead of -1e10 to avoid FP16 overflow
+             energy = energy.masked_fill(mask == 0, -1e4)
              
         attention = torch.softmax(energy, dim=-1)
         

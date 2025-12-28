@@ -1,0 +1,21 @@
+{
+  "experiment_type": "Transformer",
+  "timestamp": "20251222_065819",
+  "config": {
+    "n_epochs": 50,
+    "batch_size": 256
+  },
+  "experiments": {
+    "baseline": "experiments/100k_transformer_20251222_065819/baseline/results.json",
+    "positional_encoding": "experiments/100k_transformer_20251222_065819/positional_encoding/results.json",
+    "normalization": "experiments/100k_transformer_20251222_065819/normalization/results.json",
+    "t5_finetune": "experiments/100k_transformer_20251222_065819/t5_finetune/results.json"
+  },
+  "logs": {
+    "main": "logs/transformer_experiments_20251222_065819.log",
+    "baseline": "logs/transformer_baseline_20251222_065819.log",
+    "positional_encoding": "logs/transformer_positional_encoding_20251222_065819.log",
+    "normalization": "logs/transformer_normalization_20251222_065819.log",
+    "t5_finetune": "logs/transformer_t5_finetune_20251222_065819.log"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "model_type": "Transformer",
+  "timestamp": "20251222_065819",
+  "n_epochs": 50,
+  "batch_size": 256,
+  "experiments": ["baseline", "positional_encoding", "normalization", "t5_finetune"]
+}

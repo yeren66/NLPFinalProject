@@ -73,6 +73,7 @@ class Attention(nn.Module):
             energy = torch.bmm(hidden, w_enc.permute(0, 2, 1)).squeeze(1) # [b, s]
             
         if mask is not None:
-            energy = energy.masked_fill(mask == 0, -1e10)
+            # Use -1e4 instead of -1e10 to avoid FP16 overflow
+            energy = energy.masked_fill(mask == 0, -1e4)
             
         return F.softmax(energy, dim=1)

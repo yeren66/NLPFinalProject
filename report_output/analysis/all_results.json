@@ -1,0 +1,13 @@
+{
+  "rnn": {
+    "baseline": null,
+    "attention_mechanisms": null,
+    "teacher_forcing": null
+  },
+  "transformer": {
+    "baseline": null,
+    "positional_encoding": null,
+    "normalization": null,
+    "t5_finetune": null
+  }
+}
